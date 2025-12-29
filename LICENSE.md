@@ -20,6 +20,25 @@ The Trinity System is an AI development team architecture designed for solo deve
 
 ## Academic Use
 
+### Publishing Research About This Work
+
+If your research paper studies the Trinity System, this architecture, or this methodology as the **primary research subject**:
+
+**Co-authorship is requested by the developer of this methodology.**
+
+This is collaborative research, not observational study. We:
+- Designed the system architecture
+- Built the implementation
+- Documented the methodology
+- Analyzed the results
+
+The developer requests that publishing research about this work involve collaboration and co-authorship.
+
+**To discuss research collaboration:**  
+Contact: developer@aizenova.ai
+
+---
+
 ### Citing Our Work
 
 If you're citing, referencing, or building on this methodology in your own research:
@@ -36,25 +55,6 @@ Aizenova.ai Team (2025). Retrieved from https://github.com/aizenova-ai/Aizenova.
 - "The two-tier chat pattern (Aizenova.ai, 2025) demonstrates..."
 
 **No permission required.** Standard academic citation practices apply.
-
----
-
-### Publishing Research About This Work
-
-If your research paper studies the Trinity System, this architecture, or this methodology as the **primary research subject**:
-
-**Co-authorship may be required.**
-
-This is collaborative research, not observational study. We:
-- Designed the system architecture
-- Built the implementation
-- Documented the methodology
-- Analyzed the results
-
-Publishing research about this work may require collaboration and co-authorship.
-
-**To discuss research collaboration:**  
-Contact: developer@aizenova.ai
 
 ---
 
