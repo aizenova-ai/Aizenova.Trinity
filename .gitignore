@@ -1,0 +1,33 @@
+# Aizenova.Trinity .gitignore
+
+# Private persona files (keep in private repo only)
+signatures-raw.md
+signatures-decoded.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.bak
+
