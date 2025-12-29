@@ -189,39 +189,48 @@ This file documents proven patterns from the Trinity development team. Load this
 - Endpoints work at runtime, but contract-driven development breaks
 - Frontend type generation requires full schemas
 
-**7. PowerShell Best Practices**
+**7. External Identity Management (Entra External ID)** ⭐ **NEW**
+- **Azure AD B2C is retired/being migrated to Entra External ID** (formerly "Azure AD for Customers" / CIAM)
+- Entra External ID is the new unified platform for external identity management
+- **Features:** Better integration, modern UI, federated identity providers (Google, Facebook, etc.)
+- **Portal:** `https://entra.microsoft.com` → External Identities
+- **Adding identity providers:** External Identities → All identity providers → + Provider
+- **No app code changes needed** — Login UI automatically shows federated options
+- **Migration path:** Azure AD B2C tenants will migrate to Entra External ID
+
+**8. PowerShell Best Practices**
 - **PowerShell uses `;` not `&&`** — Bash syntax fails in Windows terminals
 - Use `; if ($?) { next-command }` for conditional chaining (exit code check)
 - Or just use `;` for sequential execution without error checking
 - **Avoid Unicode/emojis** — PowerShell parser throws `TerminatorExpectedAtEndOfString` errors
 - Stick to ASCII for reliable cross-environment execution
 
-**8. Idempotent Operations**
+**9. Idempotent Operations**
 - Check-then-insert for seeding
 - Safe to run multiple times
 - No errors on restart
 
-**9. Graceful Degradation**
+**10. Graceful Degradation**
 - Return 200 with empty data for edge cases
 - Better UX than error states
 - Clear signals to frontend
 
-**10. Pipeline Behaviors**
+**11. Pipeline Behaviors**
 - Logging via MediatR pipeline
 - Validation automatic
 - Cross-cutting concerns centralized
 
-**11. Program.cs Organization**
+**12. Program.cs Organization**
 - Extract configuration into extension methods
 - Keep orchestration readable
 - Maintainable as project grows
 
-**12. File Parsing Best Practices**
+**13. File Parsing Best Practices**
 - Line-by-line parsing more reliable than regex for structured data
 - Regex on config files can corrupt format on edge cases
 - Test with malformed input before deploying
 
-**13. Self-Healing Data Patterns** ⭐ **NEW**
+**14. Self-Healing Data Patterns** ⭐ **NEW**
 - Fix data at the source, not at the API layer
 - Example: If `displayName` is blank in database, update from OAuth claims during read
 - Better than patching in controller response (single source of truth)
@@ -428,8 +437,8 @@ This file documents proven patterns from the Trinity development team. Load this
 
 ---
 
-**Last Updated:** December 27, 2025  
-**Status:** Refactored to pattern-based index (topic-organized, not date-organized)  
+**Last Updated:** December 29, 2025  
+**Status:** Updated with Entra External ID migration info  
 **Daily Records:** See `learnings/learnings-yyyy-mm-dd.md` for chronological history
 
 ---

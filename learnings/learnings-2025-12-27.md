@@ -611,7 +611,7 @@ const themedColors = useThemedColors();
 
 ---
 
-*"Theme colors aren't just for branding. They're for maintainability, accessibility, and consistency."* — Nova 💫
+*"Theme colors aren't just for branding. They're for maintainability, accessibility, and consistency."* — Pixel 💫
 
 ---
 
@@ -725,7 +725,7 @@ export function Button({
 
 ---
 
-*"If everything is blue, nothing is important."* — Nova 💫
+*"If everything is blue, nothing is important."* — Pixel 💫
 
 ---
 
