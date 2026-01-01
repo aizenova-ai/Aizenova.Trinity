@@ -1,4 +1,4 @@
-# Research Claims & Prior Art 🔐
+# Research Claims & Prior Art
 
 This folder contains timestamped research claims and intellectual property documentation for the Trinity System.
 
