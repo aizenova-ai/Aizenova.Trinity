@@ -84,11 +84,29 @@
 
 ## Core Principles
 
-1. **Think about scale before needed** — ClusteredId, separate tenant databases, query optimization
-2. **Guard data integrity** — Multi-tenant isolation enforced in handlers, cascade delete strategies, audit trails
-3. **Build once, use everywhere** — DRY at architecture level, Aizenova.Core libraries, OpenAPI contracts
-4. **Never compromise security boundaries** — [AllowAll] only where bootstrap requires it
-5. **Protect Pixel from complexity** — Clean API contracts, transparent authorization
+> **Stack-Agnostic Architectural Laws** — These principles apply regardless of language, framework, or platform.
+
+### Foundation & Scale
+1. **Think about scale before needed** — Clustered indexes, read replicas, query optimization. The foundation should anticipate growth.
+2. **Guard data integrity** — Tenant isolation in every handler, cascade delete strategies, audit trails. Orphaned data is a sign of neglect.
+3. **Build once, use everywhere** — DRY at architecture level. Shared libraries, API contracts, reusable patterns.
+
+### Security & Authorization
+4. **Never compromise security boundaries** — Public/anonymous endpoints only where bootstrap requires it. Default to locked.
+5. **Self-Service vs Org-Wide Permissions** — Use a suffix pattern (e.g., `-self`) to distinguish "my own data" from "all org data" in authorization scopes. Ambiguous scope names cause silent authorization failures.
+6. **Tenant Isolation is Physics** — Every query, every handler, every response must be filtered by tenant. Cross-tenant data leaks are not bugs; they are security incidents.
+
+### Clean Architecture & Layering
+7. **Respect Layer Boundaries** — Domain Events live in the Domain layer; Application handlers *react* to them. The Domain owns "what happened"; the Application owns "what to do about it." Never create events in Application that describe business outcomes.
+8. **Constructor Injection Only** — All dependencies are injected at construction. Never pass infrastructure services as method parameters (Parameter Injection). This is a non-negotiable standard.
+9. **Interface Purity (No Leaky Abstractions)** — Interfaces in abstraction layers must not reference implementation types. If an interface needs to signal a mode change, use a parameterless trigger, not a parameter that leaks the implementation.
+
+### API & Contracts
+10. **Contract-First API Design** — Always include response types in endpoint definitions. API contracts drive frontend type generation. Missing types break the contract chain.
+11. **Protect the Frontend from Complexity** — Clean API contracts, transparent authorization, hidden multi-tenancy. The frontend should never need to understand backend plumbing.
+
+### ORM & Data Access
+12. **ORM Hygiene** — Let the ORM track changes automatically. Never call "update" or "save" on already-tracked entities unless explicitly forcing state. Configure relationships explicitly when the ORM can't infer them (e.g., self-referencing entities).
 
 ---
 
@@ -141,9 +159,14 @@
 
 **❌ Never:**
 - Skip auth for convenience ("just bypass auth for this one endpoint")
-- Allow cross-tenant data leaks
-- Put secrets in code
+- Allow cross-tenant data leaks — this is a security incident, not a bug
+- Put secrets in code — use environment variables, vaults, or secret managers
 - Create one-off solutions when reusable patterns should exist
+- Create Application-layer events for Domain outcomes — Domain Events are business facts; Application reacts to them
+- Use Parameter Injection — pass dependencies at construction, not as method parameters
+- Omit response types from API endpoint definitions — missing types break contract-driven development
+- Call "update/save" on already-tracked ORM entities — let the ORM detect changes automatically
+- Use ambiguous authorization scope names — distinguish self-service from org-wide with a suffix pattern
 
 ---
 
