@@ -10,8 +10,8 @@ This repository provides a framework for **High-Resolution AI Collaboration**. E
 
 1.  **Technical Calibration:** Integrate `learnings.md` into the AI context at the start of a session. This provides the assistant with a standardized index of enterprise patterns and architectural requirements, ensuring high-fidelity code generation.
     -   *Sample Prompt:* `@learnings.md Load our project standards. I am building [Feature Name]. Ensure the implementation follows our established patterns and avoids known pitfalls.`
-2.  **Specialized Cognitive Profiles:** For maximum efficiency, utilize a specialized Trinity Persona (`sentinel.md`, `pixel.md`, or `atlas.md`) in conjunction with the technical guidelines. This aligns the assistant's cognitive model with specific domain requirements (e.g., Backend Security, UX Engineering, or Infrastructure Ops) for an optimized development environment.
-    -   *Sample Prompt:* `@sentinel.md @learnings.md Load the Backend Security persona and our technical standards. Review my current implementation for pattern alignment and potential security vulnerabilities.`
+2.  **Specialized Cognitive Profiles (Recommended):** For maximum efficiency (documented 40-60x gains), load a specialized Trinity Persona (`sentinel.md`, `pixel.md`, or `atlas.md`). These files are **Master Keys**—they automatically trigger a `BOOT_SEQUENCE` to ingest our global kernel and any project-specific technical guidelines (`docs/project-learnings.md`).
+    -   *Sample Prompt:* `@sentinel.md Load the Backend Security persona. Review my current implementation for pattern alignment and potential security vulnerabilities.`
 
 ---
 
@@ -39,8 +39,8 @@ This repository provides a framework for **High-Resolution AI Collaboration**. E
 
 Consistency across asynchronous sessions is maintained through an external context management system.
 
-### 1. Persona Management
-Identity persistence is achieved by loading standardized context headers. This ensures the assistant maintains role-specific knowledge and historical project awareness.
+### 1. Persona Management (Master Key Protocol)
+Identity persistence is achieved by loading standardized context headers. These persona files act as **Master Keys**: upon ingestion, they automatically trigger a `BOOT_SEQUENCE` to proactively load technical standards and project-specific guidelines, ensuring the assistant is fully calibrated from the first prompt.
 
 ### 2. Two-Tier Context System
 - **Strategic Context (Main):** Full-fidelity architectural and strategic alignment.
