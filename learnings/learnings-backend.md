@@ -5,6 +5,11 @@
 
 ## Backend Patterns
 
+**0. THE "NO DYNAMIC" PROTOCOL (Type Safety Absolute)**
+- **Pattern:** The use of `dynamic`, `object` (as a catch-all), or `ExpandoObject` is strictly forbidden in business logic.
+- **Rationale:** In an AI-augmented workflow, type blindness allows models to "hallucinate" properties. Strict C# types (records, classes, interfaces) are the only way to ensure the AI remains grounded in reality.
+- **Contractual Standard:** Every field in a DTO must be explicitly typed. Avoid `Dictionary<string, object>`.
+
 **1. Semantic RBAC Scopes**
 - **Pattern:** Use clear suffixes (e.g., `-self`) to distinguish between personal and administrative/organizational permissions.
 - **Rationale:** Eliminates ambiguity in scope names and provides a self-documenting security model.
@@ -54,6 +59,32 @@
 - **Pattern:** Use sequential keys for physical storage (clustering) even when using non-sequential logical IDs (like GUIDs).
 - **Rationale:** Prevents database index fragmentation and maximizes write throughput.
 
+**13. Contract Ownership & DTO Locality**
+- **Pattern:** The Application Layer owns the Contract. DTOs live next to the logic that uses them.
+- **Locality Standard:**
+    - **Single-Use:** Nest within the specific Command/Query folder.
+    - **Domain-Shared:** Place in `{Domain}/Common/`.
+    - **System-Wide:** Place in `Common/Models/{Domain}/`.
+- **Rationale:** Decouples business logic from transport layers (API, CLI, Workers) and maintains high locality.
+
+**14. Metadata Hardening (2025/2026 Standards)**
+- **Pattern:** ALWAYS provide a unique `Name` property to Http attributes (e.g., `[HttpGet(Name = "...")]`) to lock the Operation ID.
+- **Pattern:** Use C# `required` + `init` properties for mandatory fields instead of `[Required]` attributes.
+- **Rationale:** Enforces contracts at compile-time and ensures stable, high-fidelity client SDK generation without metadata drift.
+
+**15. Context Bridging (The Async Boundary)**
+- **Pattern:** When standard context propagation (like `AsyncLocal`) fails across execution boundaries (e.g., Middleware -> Function), use a persistent dictionary/items collection to pass metadata.
+- **Rationale:** Ensures tenant/user context remains stable across asynchronous handoffs in isolated worker environments.
+
+**16. CQRS-Lite Segregation (Read-Only Paths)**
+- **Pattern:** Use a specific read-only abstraction for query handlers that omits mutation methods (Add/Update/Save).
+- **Inheritance:** The primary data context interface should inherit from the read-only interface. This allows for polymorphic usage where the full context can fulfill read-only requirements (e.g., in unit tests or shared services).
+- **Rationale:** Enforces "Secure by Intent," prevents accidental writes in read paths, and allows for seamless integration of read replicas.
+
+**17. Semantic Enum Serialization**
+- **Pattern:** ALWAYS serialize enums as strings in API/Contract layers.
+- **Rationale:** Prevents logic drift across platforms (where integer values may differ or be opaque) and maintains human-readable contracts.
+
 ---
 
 ## Backend Pitfalls
@@ -63,3 +94,4 @@
 3. **Leaky Abstractions** → Passing implementation details through domain interfaces creates brittle, hard-to-test systems.
 4. **Real-time Aggregation on Massive Sets** → Avoid expensive "Total Count" queries on large tables; use projections or caching.
 5. **Ignoring Build Warnings in Tests** → Leads to "warning rot" and masks logic errors.
+6. **Transport-Owned Contracts** → Defining DTOs in the API layer makes them inaccessible to non-web consumers and leads to "Metadata Erosion."

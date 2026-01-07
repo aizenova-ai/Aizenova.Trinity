@@ -5,6 +5,11 @@
 
 ## Frontend Patterns
 
+**0. THE "NO ANY" PROTOCOL (Strict Engineering Integrity)**
+- **Pattern:** Use of `any` or casting to `any` is a critical architectural failure.
+- **Rationale:** AI-driven development requires strict type boundaries. `any` allows the model to "hallucinate" properties, leading to avoidable runtime crashes.
+- **TVA Standard:** Use `VariantProps<typeof style>` or proper generics for UI library props.
+
 **1. State Machine Navigation**
 - **Pattern:** Use event-driven state updates for complex navigation flows.
 - **Rationale:** More reliable than manual delays or implicit sequencing.
@@ -44,6 +49,18 @@
 **10. Accessibility as a Quality Signal**
 - **Pattern:** Maintain high-contrast ratios and adequate target sizes (WCAG baseline).
 - **Rationale:** Users perceive accessibility and legibility as indicators of professional, high-quality software.
+
+**11. Variant-Based Component Styling**
+- **Pattern:** Decouple interaction logic from styling by using a "Variant" name or "Role" to drive visual updates.
+- **Rationale:** Framework-agnostic. Whether using CSS-in-JS, Tailwind, or Stylesheets, the component remains clean and stable.
+
+**12. Interaction Context (Agnostic ARIA)**
+- **Pattern:** Build components around interaction states (Focus, Press, Hover) using semantic triggers.
+- **Rationale:** Ensures accessibility is baked into the component lifecycle regardless of the styling library.
+
+**13. Notification Lifecycle Management**
+- **Pattern:** Use stable identifiers for real-time notifications to ensure safe manual dismissal and race-condition handling.
+- **Rationale:** Prevents "Zombie Toasts" and ensures the UI remains responsive to user interaction even during high-velocity updates.
 
 ---
 
