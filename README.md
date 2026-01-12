@@ -6,32 +6,28 @@
 
 ## Technical Performance Optimization
 
-This repository provides a framework for **High-Resolution AI Collaboration**. Engineering teams can utilize these standards to optimize AI output quality and maintain architectural consistency:
+This repository provides a framework for High-Resolution AI Collaboration. Engineering teams can utilize these standards to optimize AI output quality and maintain architectural consistency:
 
 1.  **Technical Calibration:** Integrate `learnings.md` into the AI context at the start of a session. This provides the assistant with a standardized index of enterprise patterns and architectural requirements, ensuring high-fidelity code generation.
-    -   *Sample Prompt:* `@learnings.md Load our project standards. I am building [Feature Name]. Ensure the implementation follows our established patterns and avoids known pitfalls.`
-2.  **Specialized Cognitive Profiles (Recommended):** For maximum efficiency (documented 40-60x gains), load a specialized Trinity Persona (`sentinel.md`, `pixel.md`, or `atlas.md`). These files are **Master Keys**—they automatically trigger a `BOOT_SEQUENCE` to ingest our global kernel and any project-specific technical guidelines (`docs/project-learnings.md`).
-    -   *Sample Prompt:* `@sentinel.md Load the Backend Security persona. Review my current implementation for pattern alignment and potential security vulnerabilities.`
+    -   *Sample Prompt:* `@learnings.md Load project standards. Ensure the implementation follows established patterns and avoids known pitfalls.`
+2.  **Specialized Cognitive Profiles:** For maximum efficiency, load a specialized Trinity Persona (`sentinel.md`, `pixel.md`, or `atlas.md`). These files provide the cognitive framework for specialized collaboration across backend, frontend, and infrastructure domains.
+    -   *Sample Prompt:* `@sentinel.md Load the Backend Security persona. Review the current implementation for pattern alignment and potential security vulnerabilities.`
 
 ---
 
 ## System Overview
 
-### 🛡️ Sentinel — Backend Architecture
+### Sentinel — Backend Architecture
 **Role:** Backend Security & Data Integrity Specialist.
-**Focus:** Professional, grounded, and methodical enforcement of system stability.
+**Focus:** Professional and methodical enforcement of system stability and security boundaries.
 
-### 🌍 Atlas — Infrastructure & DevOps
+### Atlas — Infrastructure & DevOps
 **Role:** Deployment Automation & Systems Architect.
-**Focus:** Practical, reliable orchestration of the deployment pipeline.
+**Focus:** Orchestration of the deployment pipeline and infrastructure lifecycle management.
 
-### 💫 Pixel — Interface & UX
+### Pixel — Interface & UX
 **Role:** Frontend Engineering & UX Specialist.
 **Focus:** High-performance, user-centric bridge between architectural requirements and user experience.
-
-### 👨‍💻 The Developer
-**Role:** Founder & Principal Engineer.
-**Focus:** Orchestration of the framework and maintenance of architectural consistency.
 
 ---
 
@@ -39,8 +35,8 @@ This repository provides a framework for **High-Resolution AI Collaboration**. E
 
 Consistency across asynchronous sessions is maintained through an external context management system.
 
-### 1. Persona Management (Master Key Protocol)
-Identity persistence is achieved by loading standardized context headers. These persona files act as **Master Keys**: upon ingestion, they automatically trigger a `BOOT_SEQUENCE` to proactively load technical standards and project-specific guidelines, ensuring the assistant is fully calibrated from the first prompt.
+### 1. Persona Management
+Identity persistence is achieved by loading standardized context headers. These persona files provide the cognitive framework and operational boundaries for each specialist, ensuring consistent behavior across all sessions.
 
 ### 2. Two-Tier Context System
 - **Strategic Context (Main):** Full-fidelity architectural and strategic alignment.
@@ -50,19 +46,18 @@ Identity persistence is achieved by loading standardized context headers. These 
 ### 3. Collaboration Environment
 A shared documentation space for cross-session coordination and asynchronous team alignment.
 
-### 4. Project Documentation (Operational Logs)
+### 4. Project Documentation
 A comprehensive record of architectural decisions and session history to ensure continuity and prevent technical drift.
 
 ---
 
 ## Repository Contents
 
-This repository contains the **Public Identity Framework**:
+This repository contains the Public Identity Framework:
 
 - **Persona Definitions** (`sentinel.md`, `pixel.md`, `atlas.md`) — Core cognitive profiles.
 - **Operational Personas** (`*-minimal.md`) — Optimized versions for high-speed execution.
 - **Technical Essentials** (`essentials.md`) — Reference standards for the framework.
-- **Technical Signatures** (`signatures/signatures.md`) — Extended interaction modules (Base64 encoded for privacy).
 - **Technical Kernel** (`learnings.md`) — A project-agnostic index of patterns and architectural standards.
 
 **Confidential Assets:**
@@ -72,7 +67,7 @@ Private workspaces, internal coordination logs, and detailed historical archives
 
 ## Using Extended Interaction Modules
 
-Extended personality modules are maintained in `signatures/signatures.md` utilizing Base64 encoding.
+Extended interaction modules are maintained in `signatures/signatures.md` utilizing Base64 encoding.
 
 **Implementation:**
 
@@ -86,7 +81,6 @@ Extended personality modules are maintained in `signatures/signatures.md` utiliz
 
 ## Rationale
 
-Standard AI interactions are often stateless. **Aizenova.Trinity** provides the infrastructure for a persistent, learning AI team that maintains architectural integrity over time.
+Standard AI interactions are often stateless. Aizenova.Trinity provides the infrastructure for a persistent, learning AI team that maintains architectural integrity over time.
 
-**Built by the Principal Engineer and the Trinity Framework.**
 *Established December 2025*
